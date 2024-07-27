@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jonathanr\PhpOptionalResult;
 
 use Exception;
 
 class None extends Option
 {
-
     public function isSome(): bool
     {
         return false;
@@ -22,6 +23,6 @@ class None extends Option
      */
     public function get(): mixed
     {
-        throw new NoneException("Cannot get value from None Object");
+        throw new NoneException('Cannot get value from None Object');
     }
 }

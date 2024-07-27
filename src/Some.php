@@ -1,14 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jonathanr\PhpOptionalResult;
 
 class Some extends Option
 {
     private mixed $value;
 
-    /**
-     * @param mixed $value
-     */
     public function __construct(mixed $value)
     {
         $this->value = $value;

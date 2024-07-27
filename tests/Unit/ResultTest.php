@@ -43,6 +43,7 @@ class ResultTest extends TestCase
 
         $this->assertEquals('a value', $ok->get());
     }
+
     //
     #[Test]
     public function it_should_be_able_to_explain_if_its_err()

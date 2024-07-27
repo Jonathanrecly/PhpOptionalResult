@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jonathanr\PhpOptionalResult;
 
 use Exception;
@@ -8,9 +10,6 @@ class Err extends Result
 {
     private mixed $error;
 
-    /**
-     * @param mixed $error
-     */
     public function __construct(mixed $error)
     {
         $this->error = $error;
@@ -31,7 +30,7 @@ class Err extends Result
      */
     public function get(): mixed
     {
-        throw new ErrException("Cannot get value from Err");
+        throw new ErrException('Cannot get value from Err');
     }
 
     public function getError(): mixed

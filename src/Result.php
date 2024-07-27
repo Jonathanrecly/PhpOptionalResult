@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jonathanr\PhpOptionalResult;
 
 abstract class Result
 {
     /**
      * @template T
-     * @param T $value
-     * @return Result
+     *
+     * @param  T  $value
      */
     public static function ok($value): Result
     {
@@ -16,8 +18,8 @@ abstract class Result
 
     /**
      * @template E
-     * @param E $error
-     * @return Result
+     *
+     * @param  E  $error
      */
     public static function err($error): Result
     {
@@ -25,15 +27,10 @@ abstract class Result
     }
 
     abstract public function isOk(): bool;
+
     abstract public function isErr(): bool;
 
-    /**
-     * @return mixed
-     */
     abstract public function get(): mixed;
 
-    /**
-     * @return mixed
-     */
     abstract public function getError(): mixed;
 }
