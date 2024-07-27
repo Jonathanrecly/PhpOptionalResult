@@ -4,6 +4,8 @@ This package is an implementation of Rust return response.
 
 ## Usage
 
+_Look at examples directory_
+
 ### Optional response
 
 When need return value that can be nullable, you can use  `Option::class`
