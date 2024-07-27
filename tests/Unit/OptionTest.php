@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 class OptionTest extends TestCase
 {
     #[Test]
-    public function it_should_return_some_object()
+    public function it_should_return_some_object(): void
     {
         // process
         $result = Option::some('a value');
@@ -22,7 +22,7 @@ class OptionTest extends TestCase
     }
 
     #[Test]
-    public function it_should_return_none_object()
+    public function it_should_return_none_object(): void
     {
         // process
         $result = Option::none();
@@ -32,7 +32,7 @@ class OptionTest extends TestCase
     }
 
     #[Test]
-    public function it_should_be_able_to_explain_if_its_some_object()
+    public function it_should_be_able_to_explain_if_its_some_object(): void
     {
         // process
         $some = Option::some('a value');
@@ -45,7 +45,7 @@ class OptionTest extends TestCase
     }
 
     #[Test]
-    public function it_should_be_able_to_explain_if_its_none()
+    public function it_should_be_able_to_explain_if_its_none(): void
     {
         // prepare
         $this->expectException(NoneException::class);

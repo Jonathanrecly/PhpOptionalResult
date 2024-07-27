@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 class ResultTest extends TestCase
 {
     #[Test]
-    public function it_should_return_ok_object()
+    public function it_should_return_ok_object(): void
     {
         // process
         $result = Result::ok('a value');
@@ -22,7 +22,7 @@ class ResultTest extends TestCase
     }
 
     #[Test]
-    public function it_should_return_err_object()
+    public function it_should_return_err_object(): void
     {
         // process
         $result = Result::err('some error');
@@ -32,7 +32,7 @@ class ResultTest extends TestCase
     }
 
     #[Test]
-    public function it_should_be_able_to_explain_if_its_ok_object()
+    public function it_should_be_able_to_explain_if_its_ok_object(): void
     {
         // process
         $ok = Result::ok('a value');
@@ -46,7 +46,7 @@ class ResultTest extends TestCase
 
     //
     #[Test]
-    public function it_should_be_able_to_explain_if_its_err()
+    public function it_should_be_able_to_explain_if_its_err(): void
     {
         // prepare
         $this->expectException(ErrException::class);
