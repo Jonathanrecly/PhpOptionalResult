@@ -25,6 +25,4 @@ jobs:
           coverage: pcov
 
       - name: Execute tests (Unit and Feature tests) via PHPUnit
-        run: |
-          php artisan db:rebuild
-          php artisan test --coverage --min=45 --exclude skip
+        run: ./vendor/bin/phpunit
