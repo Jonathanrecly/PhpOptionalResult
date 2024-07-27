@@ -1,0 +1,22 @@
+name: Code Analysis
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Check Code Style with Laravel Pint
+        run: ./vendor/bin/php-cs-fixer --test -v
+
+      - name: Analyse Code Base with Larastan
+        run: ./vendor/bin/phpstan analyse --memory-limit=2G

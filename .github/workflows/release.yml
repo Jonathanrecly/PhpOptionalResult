@@ -1,0 +1,34 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js (required to use `npx`)
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Set up Git
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+
+      - name: Extract version from composer.json
+        id: get_version
+        run: echo "::set-output name=VERSION::$(jq -r .version composer.json)"
+
+      - name: Create Tag
+        run: |
+          VERSION=${{ steps.get_version.outputs.VERSION }}
+          git tag "v$VERSION"
+          git push origin "v$VERSION"
