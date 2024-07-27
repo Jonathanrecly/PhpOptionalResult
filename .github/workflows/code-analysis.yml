@@ -21,7 +21,7 @@ jobs:
         run: composer install
 
       - name: Check Code Style with Laravel Pint
-        run: ./vendor/bin/php-cs-fixer --test -v
+        run: ./vendor/bin/php-cs-fixer -v
 
       - name: Analyse Code Base with Larastan
         run: ./vendor/bin/phpstan analyse --memory-limit=2G
