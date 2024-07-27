@@ -1,6 +1,6 @@
 {
     "name": "jonathanr/php-optional-result",
-    "version": "v1.0.3",
+    "version": "1.0.4",
     "scripts": {
         "test": "phpunit",
         "phpstan": "phpstan analyse src",
