@@ -55,6 +55,89 @@ You can replace parameter by any value you need, or by `Option::class`
 #### Get Method 
 
 - Get method return value when it's Ok return
-- Get method throw exception when it's Err return
+- Get method error value when it's Err return
 
 To get error message, getError() method is available
+
+
+## Example (_see examples directory_) 
+
+### Before : 
+```
+
+/**
+* @return string
+*/
+function askDomain(string $name): ?String
+{
+  try {
+      $json = Http::get('myResolverApi?name='.$name)->json();
+      if (isset($json['domain']) && ($json['domain'] !== null || $json['domain'] !== '')) {
+      return $json['domain'];
+      }
+      return null;
+
+  } catch (HttpException) {
+    throw new Exception('API No respond');
+  }
+}
+
+function isDomainExist(string $name): string
+{
+    try {
+        $result = askDomain($name);
+
+        if (!empty($result)) {
+            return 'domain is' . $result; 
+        }
+        
+    } catch (Exception $e) {
+        return '';
+    }
+}
+
+
+echo isDomainExist('goooooooooooogle');
+```
+
+
+### After : 
+
+```
+
+/**
+* @return Ok<Some<string>|None>|Err<None>
+*/
+function askDomain(string $name): Ok|Err
+{
+    try {
+        $json = Http::get('myResolverApi?name='.$name)->json();
+        if (isset($json['domain'])) {
+            return Result::ok(Option::some($json['domain']));
+        }
+    
+       return Result::ok(Option::none());
+    
+    } catch (HttpException) {
+    return Result::Err(Option::none());
+    }
+}
+
+function isDomainExist(string $name): string
+{
+    $result = askDomain($name);
+
+    if ($result->isErr()) {
+        return 'Not sure. API not respond';
+    }
+
+    if ($result->isOk() && $result->get()->isSome()) {
+        return 'domain is'.$result->get()->isSome()->get();
+    }
+
+    return 'domain does not exist';
+}
+
+
+echo isDomainExist('goooooooooooogle');
+```
