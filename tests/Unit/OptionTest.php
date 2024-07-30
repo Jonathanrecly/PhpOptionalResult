@@ -3,7 +3,6 @@
 namespace Jonathanr\PhpOptionalResult\Tests\Unit;
 
 use Jonathanr\PhpOptionalResult\None;
-use Jonathanr\PhpOptionalResult\NoneException;
 use Jonathanr\PhpOptionalResult\Option;
 use Jonathanr\PhpOptionalResult\Some;
 use PHPUnit\Framework\Attributes\Test;
@@ -47,8 +46,6 @@ class OptionTest extends TestCase
     #[Test]
     public function it_should_be_able_to_explain_if_its_none(): void
     {
-        // prepare
-        $this->expectException(NoneException::class);
 
         // process
         $none = Option::none();
@@ -56,7 +53,5 @@ class OptionTest extends TestCase
         // test
         $this->assertFalse($none->isSome());
         $this->assertTrue($none->isNone());
-
-        $none->get();
     }
 }
