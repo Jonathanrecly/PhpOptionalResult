@@ -5,6 +5,8 @@ use Jonathanr\PhpOptionalResult\Ok;
 use Jonathanr\PhpOptionalResult\Result;
 
 /**
+ * @param float $a
+ * @param float $b
  * @return Ok<float>|Err<string>
  */
 function divide(float $a, float $b): Ok|Err
@@ -23,10 +25,3 @@ if ($result->isOk()) {
 } else {
     echo 'Error: '.$result->get();
 }
-
-
-
-
-
-
-

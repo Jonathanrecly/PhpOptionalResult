@@ -60,9 +60,10 @@ You can replace parameter by any value you need, or by `Option::class`
 To get error message, getError() method is available
 
 
-## Example (_see examples directory_) 
 
-### Before : 
+## Example (_see examples directory_)
+
+### Before :
 ```
 
 /**
@@ -101,7 +102,7 @@ echo isDomainExist('goooooooooooogle');
 ```
 
 
-### After : 
+### After :
 
 ```
 

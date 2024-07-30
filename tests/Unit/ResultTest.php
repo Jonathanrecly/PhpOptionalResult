@@ -3,6 +3,7 @@
 namespace Jonathanr\PhpOptionalResult\Tests\Unit;
 
 use Jonathanr\PhpOptionalResult\Err;
+use Jonathanr\PhpOptionalResult\ErrException;
 use Jonathanr\PhpOptionalResult\Ok;
 use Jonathanr\PhpOptionalResult\Result;
 use PHPUnit\Framework\Attributes\Test;
@@ -47,6 +48,9 @@ class ResultTest extends TestCase
     #[Test]
     public function it_should_be_able_to_explain_if_its_err(): void
     {
+        // prepare
+        $this->expectException(ErrException::class);
+
         // process
         $err = Result::err('some error');
 
@@ -54,6 +58,9 @@ class ResultTest extends TestCase
         $this->assertFalse($err->isOk());
         $this->assertTrue($err->isErr());
 
-        $this->assertEquals('some error', $err->get());
+        // throw Err exception
+        $err->get();
+
+        $this->assertEquals('some error', $err->getError());
     }
 }
