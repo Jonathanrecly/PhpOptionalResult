@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace Jonathanr\PhpOptionalResult;
 
-use Exception;
-
+/**
+ * @template T
+ *
+ * @extends Option<T>
+ */
 class None extends Option
 {
+    public function __construct() {}
+
     public function isSome(): bool
     {
         return false;
@@ -18,11 +23,8 @@ class None extends Option
         return true;
     }
 
-    /**
-     * @throws Exception
-     */
-    public function get(): mixed
+    public function get(): null
     {
-        throw new NoneException('Cannot get value from None Object');
+        return null;
     }
 }

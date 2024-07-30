@@ -4,24 +4,29 @@ declare(strict_types=1);
 
 namespace Jonathanr\PhpOptionalResult;
 
+/**
+ * @template T
+ */
 abstract class Result
 {
     /**
-     * @template T
+     * @template U
      *
-     * @param  T  $value
+     * @param  U  $value
+     * @return Ok<U>
      */
-    public static function ok($value): Result
+    public static function ok($value): Ok
     {
         return new Ok($value);
     }
 
     /**
-     * @template E
+     * @template U
      *
-     * @param  E  $error
+     * @param  U  $error
+     * @return Err<U>
      */
-    public static function err($error): Result
+    public static function err($error): Err
     {
         return new Err($error);
     }
@@ -30,7 +35,8 @@ abstract class Result
 
     abstract public function isErr(): bool;
 
+    /**
+     * @return T
+     */
     abstract public function get(): mixed;
-
-    abstract public function getError(): mixed;
 }

@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Jonathanr\PhpOptionalResult;
 
+/**
+ * @template T
+ *
+ * @extends Option<T>
+ */
 class Some extends Option
 {
     private mixed $value;

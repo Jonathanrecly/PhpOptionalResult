@@ -6,6 +6,11 @@ namespace Jonathanr\PhpOptionalResult;
 
 use Exception;
 
+/**
+ * @template T
+ *
+ * @extends Result<T>
+ */
 class Ok extends Result
 {
     private mixed $value;

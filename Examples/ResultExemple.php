@@ -1,11 +1,18 @@
 <?php
 
+use Jonathanr\PhpOptionalResult\Err;
+use Jonathanr\PhpOptionalResult\Ok;
 use Jonathanr\PhpOptionalResult\Result;
 
-function divide(float $a, float $b): Result
+/**
+ * @param float $a
+ * @param float $b
+ * @return Ok<float>|Err<string>
+ */
+function divide(float $a, float $b): Ok|Err
 {
     if ($b == 0.0) {
-        return Result::err("Cannot divide by zero");
+        return Result::err('Cannot divide by zero');
     } else {
         return Result::ok($a / $b);
     }
@@ -14,7 +21,7 @@ function divide(float $a, float $b): Result
 $result = divide(10.0, 2.0);
 
 if ($result->isOk()) {
-    echo "Result: " . $result->get();
+    echo 'Result: '.$result->get();
 } else {
-    echo "Error: " . $result->getError();
+    echo 'Error: '.$result->get();
 }

@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Jonathanr\PhpOptionalResult;
 
-use Exception;
-
+/**
+ * @template T
+ *
+ * @extends Result<T>
+ */
 class Err extends Result
 {
     private mixed $error;
@@ -25,15 +28,7 @@ class Err extends Result
         return true;
     }
 
-    /**
-     * @throws Exception
-     */
     public function get(): mixed
-    {
-        throw new ErrException('Cannot get value from Err');
-    }
-
-    public function getError(): mixed
     {
         return $this->error;
     }
